@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submitted Requests | AESC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site">
+    <a href="/"><img src="logo.png" alt="AESC"></a>
+    <nav>
+      <a href="/">Order Request Form</a>
+      <a href="/submissions.html" class="active">Submitted Requests</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Submitted Requests</h1>
+    <p class="lead">Each week runs from Monday 9:00am to the following Monday 8:59am. Pick a week to view it. Press Copy list, then click a cell in Excel and paste.</p>
+
+    <div class="top">
+      <section aria-label="Weeks">
+        <h2 class="panel-title">Weeks</h2>
+        <div id="weeks"></div>
+      </section>
+
+      <section class="dash" aria-label="Requests dashboard">
+        <div class="dash-head">
+          <h2 id="dash-title">Requests by month</h2>
+          <div class="seg" role="group" aria-label="Choose chart">
+            <button type="button" class="segbtn active" data-view="month" aria-pressed="true">Month</button>
+            <button type="button" class="segbtn" data-view="week" aria-pressed="false">Week</button>
+            <button type="button" class="segbtn" data-view="requester" aria-pressed="false">Requester</button>
+          </div>
+        </div>
+        <div id="chart" class="chart"></div>
+        <p id="dash-note" class="dash-note"></p>
+      </section>
+    </div>
+
+    <div class="tablebar">
+      <div class="copybox">
+        <button type="button" class="btn" id="copy">Copy list</button>
+        <span id="cmsg" class="msg" role="status"></span>
+      </div>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <thead id="head"></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty" id="empty" style="display:none">No requests submitted in this week yet.</div>
+    </div>
+  </main>
+
+  <dialog id="editdlg">
+    <form id="editform" novalidate>
+      <h2>Edit request</h2>
+      <div class="row">
+        <label for="e-description">Description:</label>
+        <textarea id="e-description"></textarea>
+      </div>
+      <div class="row">
+        <label for="e-reason">Reason for request:</label>
+        <textarea id="e-reason"></textarea>
+      </div>
+      <div class="row">
+        <label for="e-dimensions">Dimensions:</label>
+        <input type="text" id="e-dimensions" autocomplete="off">
+      </div>
+      <div class="row">
+        <label for="e-material">Material:</label>
+        <input type="text" id="e-material" autocomplete="off">
+      </div>
+      <div class="row">
+        <label for="e-qty">QTY:</label>
+        <input type="number" id="e-qty" min="1" step="1" inputmode="numeric">
+      </div>
+      <div class="row">
+        <label for="e-url">URL Link:</label>
+        <input type="text" id="e-url" autocomplete="off" autocapitalize="off">
+      </div>
+      <div class="row">
+        <label for="e-image">Image:<small>(Optional – choose a new one to replace)</small></label>
+        <div>
+          <input type="file" id="e-image" accept="image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif">
+          <img id="e-preview" class="preview" alt="New image preview">
+          <p class="filehelp"><b class="ok">Can be used:</b> JPG, PNG, WEBP or GIF. One image only.<br><b class="no">Cannot be used:</b> PDF, Word or Excel files, TIFF, or HEIC photos from a computer.</p>
+          <label class="check" id="e-remove-wrap"><input type="checkbox" id="e-remove"> Remove the current image</label>
+        </div>
+      </div>
+      <div class="row">
+        <label for="e-requester">Requester:</label>
+        <select id="e-requester"></select>
+      </div>
+      <p id="e-msg" class="msg" role="status"></p>
+      <div class="dlg-actions">
+        <button type="submit" class="btn" id="e-save">Save changes</button>
+        <button type="button" class="btn ghost" id="e-cancel">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+<script src="common.js"></script>
+<script src="submissions.js"></script>
+</body>
+</html>

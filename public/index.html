@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order Request Form | AESC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site">
+    <a href="/"><img src="logo.png" alt="AESC"></a>
+    <nav>
+      <a href="/" class="active">Order Request Form</a>
+      <a href="/submissions.html">Submitted Requests</a>
+    </nav>
+  </header>
+
+  <main class="form-page">
+    <h1>Order Request</h1>
+    <p class="lead">Please fill in every box, then press submit. If a box doesn't apply, type N/A. Only the image is optional.</p>
+
+    <form id="form" novalidate>
+      <div class="row">
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <div class="row">
+        <label for="reason">Reason for request:</label>
+        <textarea id="reason" name="reason"></textarea>
+      </div>
+      <div class="row">
+        <label for="dimensions">Dimensions:<small>(Type N/A if not applicable)</small></label>
+        <input type="text" id="dimensions" name="dimensions" autocomplete="off">
+      </div>
+      <div class="row">
+        <label for="material">Material:<small>(Type N/A if not applicable)</small></label>
+        <input type="text" id="material" name="material" autocomplete="off">
+      </div>
+      <div class="row">
+        <label for="qty">QTY:</label>
+        <input type="number" id="qty" name="qty" min="1" step="1" inputmode="numeric">
+      </div>
+      <div class="row">
+        <label for="url">URL Link:<small>(Type N/A if not applicable)</small></label>
+        <input type="text" id="url" name="url" placeholder="https://" autocomplete="off" autocapitalize="off">
+      </div>
+      <div class="row">
+        <label for="image">Image:<small>(Optional)</small></label>
+        <div>
+          <input type="file" id="image" accept="image/jpeg,image/png,image/webp,image/gif,.jpg,.jpeg,.png,.webp,.gif">
+          <img id="preview" class="preview" alt="Preview">
+          <p class="filehelp"><b class="ok">Can be used:</b> JPG, PNG, WEBP or GIF. Phone photos and screenshots are fine. One image only.<br><b class="no">Cannot be used:</b> PDF, Word or Excel files, TIFF, or HEIC photos from a computer.</p>
+        </div>
+      </div>
+      <div class="row">
+        <label for="requester">Requester:</label>
+        <select id="requester" name="requester"></select>
+      </div>
+
+      <!-- honeypot for bots -->
+      <div class="hp" aria-hidden="true">
+        <label>Website <input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn" id="submit">Submit</button>
+        <span id="msg" class="msg" role="status"></span>
+      </div>
+    </form>
+  </main>
+
+<script src="common.js"></script>
+<script src="form.js"></script>
+</body>
+</html>
